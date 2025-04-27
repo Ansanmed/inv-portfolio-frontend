@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { MatButtonModule } from '@angular/material/button';
+import { TranslocoModule } from '@ngneat/transloco';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [
+    HeaderComponent,
+    RouterOutlet,
+    MatButtonModule,
+    TranslocoModule,
+    FooterComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

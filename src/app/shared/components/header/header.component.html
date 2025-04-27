@@ -1,0 +1,33 @@
+<header class="shadow d-flex align-items-center bg-light">
+  <mat-toolbar
+    class="w-100 min-vh-50 d-flex align-items-center justify-content-between"
+    *transloco="let t"
+  >
+    <h1>
+      {{ t("header.title") }}
+    </h1>
+    <div>
+      <button
+        mat-mini-fab
+        extended
+        color="primary"
+        [matMenuTriggerFor]="menu"
+        [attr.aria-label]="t('header.ariaLabels.languages')"
+      >
+        <mat-icon>languages</mat-icon>
+      </button>
+      @if (isLogged$ | async) {
+        <button mat-mini-fab extended color="primary" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      }
+    </div>
+    <mat-menu #menu="matMenu">
+      @for (lang of availableLangs; track $index) {
+        <button mat-menu-item (click)="changeLanguage(lang)">
+          {{ t("header.languages." + lang) }}
+        </button>
+      }
+    </mat-menu>
+  </mat-toolbar>
+</header>
